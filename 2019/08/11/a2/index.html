@@ -15,7 +15,7 @@
 
   <!--Description-->
   
-      <meta name="description" content="如你所见，这篇是用来占位的，想好就更。">
+      <meta name="description" content="在当前的信息时代，我们每个人都离不开智能手机，并且通过它来使用各种类型的应用满足我们生活中的各种需求。我们获取各类应用的方式主要是从手机内置的应用商店进行下载，那我们对于应用商店这一源头又了解多少呢？本次我们从数据网站kaggle获取了App Store的10K条数据，并使用R语言对其进行可视化分析">
   
 
   <!--Author-->
@@ -81,14 +81,94 @@
 
   		<div class="row">
   			<div class="col-12 mb-4">
-  <img class="img-fluid project-img" src="/images/a2.jpg" alt="关于App Store，你了解多少？">
+  <img class="img-fluid project-img" src="/images/Appstore.jpg" alt="关于App Store，你了解多少？">
 </div>
 <div class="col-lg-4 col-12 pt-3 px-4 pr-lg-5">
   <h1>关于App Store，你了解多少？</h1>
 </div>
 <div class="col-lg-8 col-12 pt-lg-3 mb-4 pl-lg-5 px-lg-0 px-4 portfolio-content">
-  <p>如你所见，这篇是用来占位的，想好就更。</p>
+  <p>在当前的信息时代，我们每个人都离不开智能手机，并且通过它来使用各种类型的应用满足我们生活中的各种需求。我们获取各类应用的方式主要是从手机内置的应用商店进行下载，那我们对于应用商店这一源头又了解多少呢？本次我们从数据网站kaggle获取了App Store的10K条数据，并使用R语言对其进行可视化分析，带大家进一步了解App Store中应用分类情况、价格分布趋势以及应用评价与评分情况，并对其进行理解与概括，得出相关结论。</p>
+<hr>
+<p>&nbsp;</p>
+<h4 id="原始数据分析与处理"><a href="#原始数据分析与处理" class="headerlink" title="原始数据分析与处理"></a>原始数据分析与处理</h4><p>&nbsp;<br><image src="../a2/1.jpg" class="img-fluid"></image></p>
+<p>&nbsp;<br>该数据中共有16个变量，对其进行分类和筛选，并移除无用字段和异常值，以便后续的分析。<br>&nbsp;<br><image src="../a2/2.jpg" class="img-fluid"></image></p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<h4 id="应用分布情况概览"><a href="#应用分布情况概览" class="headerlink" title="应用分布情况概览"></a>应用分布情况概览</h4><p>&nbsp;</p>
+<h5 id="应用分类情况"><a href="#应用分类情况" class="headerlink" title="应用分类情况"></a>应用分类情况</h5><image src="../a2/3.jpeg" class="img-fluid">
 
+<p>从该长条图中可以看出，App Store中共有23种类别的应用，前五名分别为<strong>Games（游戏）、Entertainment（娱乐）、Education（教育）、Photo&amp;Video（照片与视频）、Utilities（实用工具）</strong>。</p>
+<p>在该图中也可以得知游戏的数量要远超于其他类别应用，甚至超过了其他应用的总和，可见游戏在应用商店中的重要性，从侧面也反映出智能手机用户有比较强烈的游戏与娱乐需求。</p>
+<p>&nbsp;</p>
+<h5 id="应用收费情况"><a href="#应用收费情况" class="headerlink" title="应用收费情况"></a>应用收费情况</h5><image src="../a2/4.jpg" class="img-fluid">
+
+<p>该数据中只有应用的具体价格，使用mutate函数构造新字段Type，免费应用为Free，付费应用为Charge，并绘制饼图。如该图所示，App Store中<strong>免费应用大约占到六成，付费应用约占四成。</strong></p>
+<p>&nbsp;</p>
+<h5 id="应用评分情况"><a href="#应用评分情况" class="headerlink" title="应用评分情况"></a>应用评分情况</h5><image src="../a2/5.jpeg" class="img-fluid">
+
+<p>对该数据中评分大于0的应用进行统计并绘制直方图，可以看出App Store中<strong>多数应用的评分处于3分到5分之间，4.5分的应用数量最多。</strong></p>
+<p>&nbsp;</p>
+<h5 id="应用大小分布"><a href="#应用大小分布" class="headerlink" title="应用大小分布"></a>应用大小分布</h5><image src="../a2/6.jpeg" class="img-fluid">
+
+<p>该数据中的应用大小的单位为字节，首先将其转化为MB，再对应用大小进行统计并绘制直方图，从该图可知<strong>App Store中的应用大小主要集中在0M到1000M之间，0M到100MB大小的应用最多</strong>，最大的应用约为4000MB。</p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<h4 id="热门应用分析"><a href="#热门应用分析" class="headerlink" title="热门应用分析"></a>热门应用分析</h4><image src="../a2/7.jpg" class="img-fluid">
+
+<p>将非游戏类的其他应用筛选出来，并对用户评价量进行排序，得出前十名的热门应用，主要覆盖了社交、图片、出行、音乐、健康、天气、搜索等方面。从表格中可以看出<strong>热门的Top10应用均为免费应用，并且这些应用普遍占用的内存都比较小。</strong></p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<h4 id="热门游戏分析"><a href="#热门游戏分析" class="headerlink" title="热门游戏分析"></a>热门游戏分析</h4><image src="../a2/8.jpg" class="img-fluid">
+
+<p>由于游戏类应用所占的比重较大，将其筛选出来，对其用户评价数量进行排序，得出前十名的热门游戏。从表格数据中可以看出，Top10游戏主要覆盖了策略、休闲、动作、跑酷等类型，并且这其中只有经典水果忍者这一款付费游戏，<strong>可见大多数用户对于免费游戏更为青睐，下载量更高。</strong></p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<h4 id="应用大小分析"><a href="#应用大小分析" class="headerlink" title="应用大小分析"></a>应用大小分析</h4><image src="../a2/9.jpg" class="img-fluid">
+
+<p>为了研究应用大小的具体分布情况，对应用大小数据按照类别绘制箱形图。从该图中可以看出，<strong>除游戏类应用外，其他类别的应用在大小分布上并没有明显差异。大部分类别的应用大小中位数都在100M上下</strong>，并存在极少数超过上界的异常值，阅读、教育和娱乐这几类存在的大型应用比较多。</p>
+<p>游戏类应用大小分布和其他类型应用存在较大差异，从图中可以看出，有大量超过上界的异常值，这说明<strong>App Store中存在大型游戏，500M到1500M的大型游戏最多，最大的游戏将近4000M。</strong>但是由于游戏类应用的基数比较大，大型游戏只占较小的一部分，使得<strong>游戏应用大小的均值并不是很大，约为120M。</strong></p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<h4 id="付费应用分析"><a href="#付费应用分析" class="headerlink" title="付费应用分析"></a>付费应用分析</h4><image src="../a2/10.jpg" class="img-fluid">
+
+<p>筛选出数据中的付费应用并进行排序，可以发现存在<strong>极少数价格高于40美元的应用</strong>，并且多数为评分较高的教育应用，其中价格最高的是一款名为“LAMP Words for Life”的语言学习应用，售价将近300美元。</p>
+<image src="../a2/11.jpeg" class="img-fluid">
+
+<p>为了进一步分析付费应用的价格分布情况，对应用价格进行统计并绘制直方图。<strong>从该图可知绝大多数付费应用都在0-5美元之间，1美元以下的应用最多</strong>。</p>
+<image src="../a2/12.jpeg" class="img-fluid">
+
+<p>统计数据中各类付费应用的数量并进行排名，绘制条形图。可以看出由于基数关系，<strong>游戏仍是数量最多的付费应用</strong>，但是其他类别的排名出现了一些变化。<strong>教育类的付费应用排名第二，娱乐、影音、工具、健康类的收费应用也比较多，而社交、新闻、饮食、医疗、购物等分类很少有付费应用的出现。</strong></p>
+<image src="../a2/13.jpg" class="img-fluid">
+
+<p>为了研究付费应用价格的具体分布情况，对应用价格数据按照类别绘制箱形图，并进行排序。由于只有极少数超过40美元的应用，故将横坐标限制在0-40美元，便于更清晰的查看数据。从该图中我们可以获悉各类应用具体的的价格分布情况，以及不同类别应用定价的区别。</p>
+<p>从图中我们可以看出有一类为“Catalogs”的媒体分类软件均价最高，随后是生产效率工具，音乐和商务类应用，他们的平均价格相当,都在5美元左右。游戏类型的收费应用虽然数量第一，但是均价处于中间位置，并且只有少数异常值，可以看出<strong>大部分的付费游戏应用定价并不高，普遍低于5美元。多数数量排名靠前的应用收费都不高</strong>，社交类和金融类的付费应用平均收费最低，小于1美元。</p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<h4 id="应用价格与下载量相关性的分析"><a href="#应用价格与下载量相关性的分析" class="headerlink" title="应用价格与下载量相关性的分析"></a>应用价格与下载量相关性的分析</h4><p>该部分在于研究收费应用价格与应用评价总数的相关关系，分析应用下载是否受价格影响</p>
+<image src="../a2/14.jpeg" class="img-fluid">
+
+<p>由于该数据中没有应用下载量的数据，故使用应用评价总数数据来近似应用的下载量。以应用价格为横坐标，应用评价总数为纵坐标绘制散点图。在该图中，应用的下载量与价格呈现近似对数关系，及随着应用价格的增长，下载量急速下降。</p>
+<image src="../a2/15.jpeg" class="img-fluid">
+
+<p>为了判断是否是各类应用的普遍规律，在散点图里加入了颜色维度，发现整体趋势受到了游戏这一分类的影响，可能其他应用不适用。</p>
+<image src="../a2/16.jpeg" class="img-fluid">
+
+<p>从分类维度对散点图进行分面处理，在该图中可以看出<strong>其他类型的付费应用确实与游戏类的付费应用表现出来的趋势不同，他们的下载量都处于较为均匀的分布，说明有需求的用户在购买这些应用时，并不太会受到该应用价格的影响。</strong></p>
+<p>而游戏型应用则显示出这种对数函数的分布规律，<strong>用户更爱尝试价格低廉的游戏应用，随着价格的增长，购买量下降的非常明显。</strong>从这里可以看出和其他应用相比，游戏的选择性更广，而且和高价游戏相比，用户更乐于接受价格比较低的游戏。</p>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>本次的分析主要针对App Store应用数据的类别、价格分布、评分、应用大小进行了分析，并重点对其中的付费应用进行了一些研究。由于接触R语言时间并不是很长，所以可能对这份数据分析的不够深入，有些结论可能比较草率，但这确实是第一次对这么大的数据集进行分析，在自己的可视化道路上开启了一个新的方向。感谢政彦同学近两个月来的教学和耐心指导，带我们入门了这么好用的可视化工具，期待以后还能有更多的机会做专业更有趣的可视化数据分析。</p>
+<p>&nbsp;</p>
+<hr>
+<p><em>2019-10-16  by Cumulus</em></p>
+</image></image></image></image></image></image></image></image></image></image></image></image></image></image>
 </div>
 
 
@@ -97,7 +177,8 @@
   	</div>
 
     <!-- After footer scripts -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
